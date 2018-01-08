@@ -54,9 +54,9 @@ def algo_tri_lex(vectors, tri_critere) :
     
 
 #test = [ [1,12], [3,5], [5,8], [4,5], [4,3] ,[2,1]]
-v = vector_factory(200,20)
-sol = algo_tri_lex(v,0)
-print(v)
-print("""""""")
-print(sol)
-draw(v, sol)
+#v = vector_factory(200,20)
+#sol = algo_tri_lex(v,0)
+#print(v)
+#print("""""""")
+#print(sol)
+#draw(v, sol)

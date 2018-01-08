@@ -15,3 +15,47 @@ Created on Sun Oct 22 12:26:51 2017
 #chaque valeur de n, on fera une moyenne du temps d'exécution sur 50 ensembles
 #tirés aléatoirement.
 
+import tools as tls
+from algo_lex import algo_tri_lex
+from algo_naif_1 import algo_naif
+from timeit import default_timer as timer
+from matplotlib import pyplot as plt
+import numpy as np
+
+def compare_naif_lex(nbr_experiment, start, end, step, esperance):
+    l_n = []
+    for n in range(start, end, step):
+        # on va effectuer 50 expériences successives et stocker les résutats dans un vecteur
+        l_50_exp = []
+        print('running for : '+str(n)+' vectors')
+        for j in range(nbr_experiment):
+            # construction des vecteurs de points
+            vectors = tls.vector_factory(n, esperance)
+            # mesure du temps pour l'algo naif
+            start_timer = timer()
+            algo_naif(vectors)
+            end_timer = timer()
+            timer_naif = end_timer - start_timer
+            # mesure du temps pour l'algo lex
+            start_timer = timer()
+            algo_tri_lex(vectors, 1)
+            end_timer = timer()
+            timer_lex = end_timer - start_timer
+            # sauvegarde
+            l_50_exp.append([timer_naif, timer_lex])
+        l_n.append(np.mean(l_50_exp, axis=0).tolist())
+
+    plt.plot(list(range(start, end, step)), [item[0] for item in l_n], label="Algo naif")
+    plt.plot(list(range(start, end, step)), [item[1] for item in l_n], label="Algo lex")
+    plt.legend(loc ='best')
+    plt.xlabel('Nombre de vecteurs')
+    plt.ylabel('Temps d\'execution')
+    plt.title("Comparaison des temps d'execution")
+    plt.show()
+    return l_n
+
+
+#compare_naif_lex(10, 200, 10001, 200, 1000)
+
+
+
