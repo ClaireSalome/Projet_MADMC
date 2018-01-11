@@ -38,7 +38,7 @@ def compare_naif_lex(nbr_experiment, start, end, step, esperance):
             timer_naif = end_timer - start_timer
             # mesure du temps pour l'algo lex
             start_timer = timer()
-            algo_tri_lex(vectors, 1)
+            algo_tri_lex(vectors)
             end_timer = timer()
             timer_lex = end_timer - start_timer
             # sauvegarde
@@ -55,7 +55,7 @@ def compare_naif_lex(nbr_experiment, start, end, step, esperance):
     return l_n
 
 
-#compare_naif_lex(10, 200, 10001, 200, 1000)
+compare_naif_lex(50, 200, 10001, 200, 1000)
 
 
 

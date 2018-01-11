@@ -23,12 +23,12 @@ def prog_dyn(k,n,f):
                 # supprimer les doublons
                 nouvel_ens.sort()
                 nouvel_ens = list(nouvel_ens for nouvel_ens, _ in itertools.groupby(nouvel_ens))
-                P[j][i] = algo_tri_lex(nouvel_ens,0)
+                P[j][i] = algo_tri_lex(nouvel_ens)
             print(P[j][i])
     return P
 
 # # Teste de la programmation dynamique du cours
-# f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
-# P = prog_dyn(3, 7, f)
-#
-# print(P[3][6])
+f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
+P = prog_dyn(3, 7, f)
+print(P)
+#print(P[3][6])
