@@ -6,7 +6,7 @@ def prog_dyn(k,n,f):
     # initialisation :
     for j in range(k+1):
         for i in range(n):
-            print('i = '+str(i)+' , j = '+str(j))
+            #print('i = '+str(i)+' , j = '+str(j))
             if j==0:
                 P[0][i].append([0, 0])
             elif i==0:
@@ -24,11 +24,11 @@ def prog_dyn(k,n,f):
                 nouvel_ens.sort()
                 nouvel_ens = list(nouvel_ens for nouvel_ens, _ in itertools.groupby(nouvel_ens))
                 P[j][i] = algo_tri_lex(nouvel_ens)
-            print(P[j][i])
+            #print(P[j][i])
     return P
 
 # # Teste de la programmation dynamique du cours
-f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
-P = prog_dyn(3, 7, f)
-print(P)
+#f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
+#P = prog_dyn(3, 7, f)
+#print(P)
 #print(P[3][6])

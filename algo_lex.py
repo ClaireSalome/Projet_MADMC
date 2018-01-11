@@ -40,8 +40,8 @@ def algo_tri_lex(vectors) :
     return non_domines
     
 
-v = vector_factory(1000,20)
-sol = algo_tri_lex(v)
-draw(v, sol)  
-print("""""""")
-print(sol)
+#v = vector_factory(1000,20)
+#sol = algo_tri_lex(v)
+#draw(v, sol)  
+#print("""""""")
+#print(sol)
