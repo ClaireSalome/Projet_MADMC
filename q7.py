@@ -1,6 +1,9 @@
 from algo_lex import algo_tri_lex
 import itertools
 
+
+## Fonction de programmation dynamique qui renvoie les Pareto-optimaux d'une selection de k vecteurs
+# parmi un ensemble de vecteurs
 def prog_dyn(vecteurs,k):
     n = len(vecteurs)
     P = [[[] for i in range(n)] for j in range(k+1)]
