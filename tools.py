@@ -25,17 +25,30 @@ def vector_factory( n, esperance) :
 #affichage graphique des points
 def draw(data, non_domines) :
     color= 'bo'
-    label = ''
+    #pour la legende
+    first_blue = True 
+    first_red = True
+    
     for i in range(len(data)) :
+ 
         if data[i] in non_domines :
             color = 'ro'
-            label="non_domines"
+            if first_red == True :
+                first_red = False
+                plt.plot(data[i][0], data[i][1], color, label="non-dominé")
+                continue 
         else :
             color = 'bo'
-            label=''
-        plt.plot(data[i][0], data[i][1], color, label=label)
+            if first_blue == True :
+                first_blue = False
+                plt.plot(data[i][0], data[i][1], color, label="dominé")
+                continue
+            
+        plt.plot(data[i][0], data[i][1], color)
         
     plt.title("Affichage des vecteurs")
-    #plt.legend(loc='best')
+    plt.xlabel('y1')
+    plt.ylabel('y2')
+    plt.legend(loc='best')
     plt.show()
     

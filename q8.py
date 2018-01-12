@@ -1,5 +1,7 @@
+import numpy as np
+
 def minimax(ensemble, intervalle):
-    val_minimax = 10^3
+    val_minimax = np.inf
     y_minimax = None
     for vecteur in ensemble:
         if vecteur[0]>vecteur[1]:
