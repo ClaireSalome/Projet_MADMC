@@ -33,12 +33,12 @@ def algo_naif(vectors) :
                         dominated = True
                         break
             if dominated == True :
-                non_domines.remove(vectors[i])
-    draw(vectors,non_domines)    
+                non_domines.remove(vectors[i])  
     return non_domines
             
             
 #v = vector_factory(1000, 3.8)
 #non_domines = algo_naif(v)
+#draw(vectors,non_domines)  
 #print("****Non dominés****")
 #print(non_domines)

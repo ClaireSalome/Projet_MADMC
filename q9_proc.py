@@ -5,7 +5,6 @@ def proc(k,n,f):
     # f est le vecteur cout de chaque objet dans l'espace des obj
     P = q7.prog_dyn(k,n,f)
     pareto_opt = P[k][n-1]
-    #print(pareto_opt)
     y = q8.minimax(pareto_opt,[0,1])
     return y
 

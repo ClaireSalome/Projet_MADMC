@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Oct 22 12:26:51 2017
 
-@author: clair
-"""
 
 """QUESTION 5"""
 #Comparer les complexités des deux algorithmes proposés, et
@@ -55,7 +51,7 @@ def compare_naif_lex(nbr_experiment, start, end, step, esperance):
     return l_n
 
 
-compare_naif_lex(50, 200, 10001, 200, 1000)
+#compare_naif_lex(50, 200, 10001, 200, 1000)
 
 
 

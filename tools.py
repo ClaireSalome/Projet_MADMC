@@ -52,3 +52,15 @@ def draw(data, non_domines) :
     plt.legend(loc='best')
     plt.show()
     
+    
+#affichage pour le minimax
+def draw_minimax(vectors, minimax_point):
+    plt.plot(minimax_point[0], minimax_point[1], 'rx', label="minimax")
+    for i in range(len(vectors)):
+        plt.plot(vectors[i][0], vectors[i][1], 'bo')
+    
+    plt.title("Affichage des vecteurs et du point minimax")
+    plt.xlabel('y1')
+    plt.ylabel('y2')
+    plt.legend(loc='best')
+    plt.show()

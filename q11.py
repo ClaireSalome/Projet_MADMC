@@ -43,10 +43,10 @@ def seconde_proc(I_vectors, I, k):
 # # Test de la programmation dynamique du cours
 #f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
 #print(seconde_proc(f, [0,1], 3))
-v = vector_factory(50,30) 
-print("PREMIERE")
-y = q9_proc.proc(10,50,v)
-print(y)
-print("SECONDE")
-y = seconde_proc(v,[0,1],10)
-print(y)
+#v = vector_factory(50,30) 
+#print("PREMIERE")
+#y = q9_proc.proc(10,50,v)
+#print(y)
+#print("SECONDE")
+#y = seconde_proc(v,[0,1],10)
+#print(y)
