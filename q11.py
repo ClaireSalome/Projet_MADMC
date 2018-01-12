@@ -1,6 +1,6 @@
-import q7_prog_dyn as q7
+import q7 as q7
 import q8
-import q9_proc
+import q9
 import tools
 
 def transformee(pi, I):
@@ -47,7 +47,7 @@ def seconde_proc(I_vectors, I, k):
 #print(seconde_proc(f, [0,1], 3))
 # v = tools.vector_factory(50,30)
 # print("PREMIERE")
-# y = q9_proc.proc(v,[0,1],10)
+# y = q9.first_proc(v,[0,1],10)
 # print(y)
 # print("SECONDE")
 # y = seconde_proc(v,[0,1],10)

@@ -1,7 +1,7 @@
-import q7_prog_dyn as q7
+import q7
 import q8
 
-def proc(vectors, interval, k):
+def first_proc(vectors, interval, k):
     # f est le vecteur cout de chaque objet dans l'espace des obj
     P = q7.prog_dyn(vectors,k)
     n = len(vectors)

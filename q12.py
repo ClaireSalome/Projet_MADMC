@@ -1,5 +1,5 @@
 import q11
-import q9_proc
+import q9
 import tools as tls
 from timeit import default_timer as timer
 import numpy as np
@@ -18,7 +18,7 @@ def comparaison_procedures(n, k, m, nbr_tests):
 
             # mesure du temps pour la procedure 1
             start_timer = timer()
-            q9_proc.proc(vectors, I_epsilon, k)
+            q9.first_proc(vectors, I_epsilon, k)
             end_timer = timer()
             timer_proc1 = end_timer - start_timer
 
