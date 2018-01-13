@@ -1,6 +1,6 @@
 # coding=utf-8
 import proc1
-from tools import *
+import tools as tls
 import numpy as np
 import matplotlib.pyplot as plt
 
