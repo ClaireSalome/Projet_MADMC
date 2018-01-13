@@ -11,16 +11,25 @@ from proc2 import seconde_proc
 
 '''Comparer expérimentalement la première et la seconde proc
 édure de résolution en traçant les courbes des temps d'exécution respectifs
+<<<<<<< HEAD
 des deux procédures en fonction de max 􀀀 min, sur des ensembles de vecteurs
 tirés aléatoirement à l'aide de la fonction de la question 2. Dans les
 expérimentations, on xera n = 50, k = 10 et m = 1000. On considérera les
+=======
+des deux procédures en fonction de 
+max 􀀀 
+min, sur des ensembles de vecteurs
+tirés aléatoirement à l'aide de la fonction de la question 2. Dans les
+expérimentations, on 
+xera n = 50, k = 10 et m = 1000. On considérera les
+>>>>>>> 7500019fbdd26c493b56e32e5f05c265ff73b4a9
 intervalles I_epsilon= [0.5 - epsilon ; 0.5 + epsilon] en faisant varier epsilon de 0.025 à 0.5 (par pas
 de 0.025 par exemple). Pour chaque intervalle I_epsilon, on fera une moyenne du
 temps d'exécution sur 50 instances tirées aléatoirement.'''
 
 
 def comparaison_procedures(n, k, m, nbr_tests):
-    # pour chaque interval
+    # pour chaque intervalle
     results = []
     for epsilon in np.arange(0.025, 0.51, 0.025):
         i_epsilon = [0.5 - epsilon, 0.5 + epsilon]
@@ -58,4 +67,5 @@ def comparaison_procedures(n, k, m, nbr_tests):
     return results
 
 
-comparaison_procedures(1, 10, 1000, 50)
+
+#comparaison_procedures(1, 10, 1000, 50)

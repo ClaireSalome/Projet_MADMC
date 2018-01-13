@@ -1,6 +1,7 @@
 # coding=utf-8
 import itertools
 import numpy as np
+import matplotlib.pyplot as plt
 from algos import algo_tri_lex
 import copy
 
@@ -40,9 +41,10 @@ def prog_dyn(vecteurs, k):
 
 
 # # # Teste de la programmation dynamique du cours
-f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
-# p = prog_dyn(f,3)
-# print(p)
+#f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
+#p = prog_dyn(f,3)
+#print(p)
+#print(p[3][6])
 
 def backward_prog_dyn(p, vector, vecteurs, liste_sols):
     p = np.array(p)
@@ -68,8 +70,11 @@ def backward_prog_dyn(p, vector, vecteurs, liste_sols):
             sol = (backward_prog_dyn(p[:len(p)-1, :i], [x - y for x, y in zip(vector, vecteurs[i])], vecteurs, sol))
     return sol
 
-p = prog_dyn(f,3)
-print(backward_prog_dyn(p,[5,9],f,[]))
+#p = prog_dyn(f,3)
+#print(p[3][6])
+#print(backward_prog_dyn(p,[5,9],f,[]))
+#for i in range(len(p[3][len(f)-1])):
+#    print(backward_prog_dyn(p,p[3][len(f)-1][i],f,[]))
 
 '''QUESTION 8'''
 
@@ -101,11 +106,12 @@ pour implémenter la procédure en deux temps décrite plus haut.'''
 
 def first_proc(vectors, interval, k):
     # f est le vecteur cout de chaque objet dans l'espace des obj
-    pareto_opt = prog_dyn(vectors, k)
-    # print(pareto_opt)
+    P = prog_dyn(vectors, k)
+#    print(pareto_opt)
+    pareto_opt = P[k][len(vectors)-1]
     y = minimax(pareto_opt, interval)
-    return y
+    return y, P
 
 # # Teste de la programmation dynamique du cours
 # f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
-# print(first_proc(f, [0,1], 3))
+#print(first_proc(f, [0,1], 3))

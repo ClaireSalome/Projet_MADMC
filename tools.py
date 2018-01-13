@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct 20 11:54:06 2017
-
-@author: clair
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -23,35 +17,35 @@ def vector_factory(n, esperance):
         l.append(vector)
     return l
 
-
-# affichage graphique des points
-
-
-def draw(data, non_domines):
-    color = 'bo'
-    # pour la legende
-    first_blue = True
+    
+    
+#affichage graphique des points
+def draw(data, non_domines) :
+    color= 'bo'
+    #pour la legende
+    first_blue = True 
     first_red = True
-
-    for i in range(len(data)):
-
-        if data[i] in non_domines:
+    
+    for i in range(len(data)) :
+ 
+        if data[i] in non_domines :
             color = 'ro'
-            if first_red == True:
+            if first_red == True :
                 first_red = False
-                plt.plot(data[i][0], data[i][1], color, label=u"non-dominé")
-                continue
-        else:
+                plt.plot(data[i][0], data[i][1], color, label="non-dominé")
+                continue 
+        else :
             color = 'bo'
-            if first_blue == True:
+            if first_blue == True :
                 first_blue = False
-                plt.plot(data[i][0], data[i][1], color, label=u"dominé")
+                plt.plot(data[i][0], data[i][1], color, label="dominé")
                 continue
-
+            
         plt.plot(data[i][0], data[i][1], color)
-
+        
     plt.title("Affichage des vecteurs")
     plt.xlabel('y1')
     plt.ylabel('y2')
     plt.legend(loc='best')
+
     plt.show()
