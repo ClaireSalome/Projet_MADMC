@@ -2,6 +2,7 @@
 import itertools
 import numpy as np
 from algos import algo_tri_lex
+import copy
 
 '''QUESTION 7'''
 
@@ -35,14 +36,40 @@ def prog_dyn(vecteurs, k):
                 nouvel_ens = list(nouvel_ens for nouvel_ens, _ in itertools.groupby(nouvel_ens))
                 p[j][i] = algo_tri_lex(nouvel_ens)
             # print(P[j][i])
-    return p[k][len(vecteurs)-1]
+    return p#[k][len(vecteurs)-1]
 
 
 # # # Teste de la programmation dynamique du cours
-# f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
+f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
 # p = prog_dyn(f,3)
 # print(p)
 
+def backward_prog_dyn(p, vector, vecteurs, liste_sols):
+    p = np.array(p)
+    # verifier que vector est bien dans la dernière case.
+    sol = copy.deepcopy(liste_sols)
+    test_end = False
+    if vector in p[len(p)-1][len(p[0])-1]:
+        test_ligne = True
+        i = len(p[0])-1
+        while test_ligne is True and i != -1:
+            # on teste s'il est dans la case de gauche
+            if vector not in p[len(p)-1][i-1] : # si non, on va interrompre la boucle
+                test_ligne = False
+            else : # si oui, on continue en passant à la case de gauche
+                i = i -1
+        if i == -1 :
+            sol.append(vecteurs[i+1])
+        else :
+            # en sortie de la boucle on a le i de la case la plus à gauche ou on retrouve le point.
+            # il faut remonter d'une ligne dans le tableau, on en deduit un premier point
+            sol.append(vecteurs[i])
+            # on recommence avec
+            sol = (backward_prog_dyn(p[:len(p)-1, :i], [x - y for x, y in zip(vector, vecteurs[i])], vecteurs, sol))
+    return sol
+
+p = prog_dyn(f,3)
+print(backward_prog_dyn(p,[5,9],f,[]))
 
 '''QUESTION 8'''
 
