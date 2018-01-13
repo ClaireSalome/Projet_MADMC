@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Oct 20 11:54:06 2017
-
-@author: clair
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -47,19 +41,6 @@ def draw(data, non_domines) :
         plt.plot(data[i][0], data[i][1], color)
         
     plt.title("Affichage des vecteurs")
-    plt.xlabel('y1')
-    plt.ylabel('y2')
-    plt.legend(loc='best')
-    plt.show()
-    
-    
-#affichage pour le minimax
-def draw_minimax(vectors, minimax_point):
-    plt.plot(minimax_point[0], minimax_point[1], 'rx', label="minimax")
-    for i in range(len(vectors)):
-        plt.plot(vectors[i][0], vectors[i][1], 'bo')
-    
-    plt.title("Affichage des vecteurs et du point minimax")
     plt.xlabel('y1')
     plt.ylabel('y2')
     plt.legend(loc='best')
