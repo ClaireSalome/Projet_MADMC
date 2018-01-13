@@ -1,6 +1,6 @@
 # coding=utf-8
 import proc1
-import tools as tls
+from tools import *
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -29,7 +29,7 @@ def transformee_inverse(pi_prime, interval):
     for vecteur in pi_prime:
         y1 = ((1 - alpha_max) * vecteur[0] - (1 - alpha_min) * vecteur[1]) / (alpha_min - alpha_max)
         y2 = (alpha_min * vecteur[1] - alpha_max * vecteur[0]) / (alpha_min - alpha_max)
-        new_vect = [y1, y2]
+        new_vect = [round(y1,0), round(y2,0)]
         pi.append(new_vect)
     return pi
 
@@ -46,7 +46,7 @@ def seconde_proc(vectors, interval, k):
     i_opt = transformee_inverse(pareto_opt, interval)
     # calcul du minimax
     y = proc1.minimax(i_opt, interval)
-    return y , p
+    return y, p, i_opt
 
 # # Test de la programmation dynamique du cours
 # f = [[1,4],[2,3],[5,2],[2,2],[3,1],[2,5],[3,4]]
@@ -58,29 +58,3 @@ def seconde_proc(vectors, interval, k):
 #print("SECONDE")
 #y = seconde_proc(v,[0,1],10)
 #print(y)
-
-#affichage pour le minimax
-def draw_minimax(vectors,P, minimax, I, k, second = False):
-    legend = True
-    #si c'est la seconde procédure
-    if second :
-        sol=[]
-    else:
-        sol = proc1.backward_prog_dyn(P, minimax, vectors, [])
-    print('sol')
-    print(sol)
-    for i in range(len(vectors)):
-        if vectors[i] in sol :
-            if legend :
-                plt.plot(vectors[i][0], vectors[i][1], 'ro', label="solution minimax")
-                legend = False
-            else:
-                plt.plot(vectors[i][0], vectors[i][1], 'ro')
-        else :
-            plt.plot(vectors[i][0], vectors[i][1], 'bo')
-    
-    plt.title("Affichage des vecteurs et de la solution minimax")
-    plt.xlabel('y1')
-    plt.ylabel('y2')
-    plt.legend(loc='best')
-    plt.show()
