@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from algos import algo_tri_lex
 import copy
+import tools as tls
 
 '''QUESTION 7'''
 
@@ -29,6 +30,7 @@ def prog_dyn(vecteurs, k):
             else:
                 nouvel_ens_1 = []
                 for e, element in enumerate(p[j - 1][i - 1]):
+                    #print([x + y for (x, y) in zip(element, vecteurs[i])])
                     nouvel_ens_1.append([x + y for (x, y) in zip(element, vecteurs[i])])
                 nouvel_ens_2 = p[j][i - 1]
                 nouvel_ens = nouvel_ens_1 + nouvel_ens_2
@@ -46,17 +48,18 @@ def prog_dyn(vecteurs, k):
 #print(p)
 #print(p[3][6])
 
+
 def backward_prog_dyn(p, vector, vecteurs, liste_sols):
     p = np.array(p)
     # verifier que vector est bien dans la dernière case.
     sol = copy.deepcopy(liste_sols)
     test_end = False
-    if vector in p[len(p)-1][len(p[0])-1]:
+    if tls.approximatively_in(vector, p[len(p)-1][len(p[0])-1]):
         test_ligne = True
         i = len(p[0])-1
         while test_ligne is True and i != -1:
             # on teste s'il est dans la case de gauche
-            if vector not in p[len(p)-1][i-1] : # si non, on va interrompre la boucle
+            if not tls.approximatively_in(vector, p[len(p)-1][i-1]): # si non, on va interrompre la boucle
                 test_ligne = False
             else : # si oui, on continue en passant à la case de gauche
                 i = i -1
@@ -66,8 +69,11 @@ def backward_prog_dyn(p, vector, vecteurs, liste_sols):
             # en sortie de la boucle on a le i de la case la plus à gauche ou on retrouve le point.
             # il faut remonter d'une ligne dans le tableau, on en deduit un premier point
             sol.append(vecteurs[i])
-            # on recommence avec
-            sol = (backward_prog_dyn(p[:len(p)-1, :i], [x - y for x, y in zip(vector, vecteurs[i])], vecteurs, sol))
+            # on calcul le nouveau vecteur :
+            new_vect = [x - y for x, y in zip(vector, vecteurs[i])]
+            if not tls.approximatively_equals(new_vect, [0,0]):
+                # on recommence avec
+                sol = (backward_prog_dyn(p[:len(p)-1, :i], new_vect, vecteurs, sol))
     return sol
 
 #p = prog_dyn(f,3)

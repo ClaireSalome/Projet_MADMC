@@ -123,8 +123,8 @@ def compare_naif_lex(nbr_experiment, start, end, step, m):
             l_50_exp.append([timer_naif, timer_lex])
         l_n.append(np.mean(l_50_exp, axis=0).tolist())
 
-    plt.plot(list(range(start, end, step)), [item[0] for item in l_n], label="Algo naif")
-    plt.plot(list(range(start, end, step)), [item[1] for item in l_n], label="Algo lex")
+    plt.plot(list(range(start, end, step)), [item[0] for item in l_n], label="Algo. naif")
+    plt.plot(list(range(start, end, step)), [item[1] for item in l_n], label="Algo. lexicographique")
     plt.legend(loc ='best')
     plt.xlabel('Nombre de vecteurs')
     plt.ylabel('Temps d\'execution')

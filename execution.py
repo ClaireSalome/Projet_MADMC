@@ -6,18 +6,19 @@ from proc2 import *
 from compare_results import *
 
 #generation des vecteurs
-v = vector_factory(20, 20)
-k = 1
-I = [0,1]
+n = 50
+v = vector_factory(n, 1000)
+k = 10
+I = [0.3,0.7]
 
 """""ALGORITHME NAIF"""""
 #res = algo_naif(v)
-#draw(v,res) 
+#draw(v,res)
 
 
 """""ALGORITHME TRI LEXICOGRAPHIQUE"""""
 #res =  algo_tri_lex(v)
-#draw(v,res) 
+#draw(v,res)
 
 
 """""COMPARAISON DES DEUX ALGORITHMES"""""
@@ -25,17 +26,29 @@ I = [0,1]
 
  
 """""PREMIERE PROCEDURE DE RESOLUTION"""""
-minimax, P = first_proc(v,I,k)
-print(minimax)
-draw_minimax(v,P, minimax, I,k)
-print(v)
+#minimax, P = first_proc(v,I,k)
+#print(minimax)
+#print(v)
+#draw_minimax(v,P, minimax, I,k)
 
 
 """""SECONDE PROCEDURE DE RESOLUTION"""""
-minimax, P = seconde_proc(v,I,k)
-print(minimax)
-draw_minimax(v, P, minimax, I, k, True)
+#minimax, P, I_domines = seconde_proc(v,I,k)
+#print(minimax)
+#print(v)
+#draw_minimax(v, P, minimax, I, k, True)
 
+
+"""AFFICHAGE COMPARE DES POINTS PARETO OPTIMAUX ET I OPTIMAUX"""
+# minimax, P = first_proc(v,I,k)
+# minimax, P_prime, I_domines = seconde_proc(v,I,k)
+# print minimax
+# draw_point_minimax(P, v, minimax, I, k, I_domines)
+
+
+"""COMPARAISON DES ENSEMBLES I-OPT ET P-OPT POUR LES DIFFERENTS INTERVALLES CONSIDERES"""
+# comparaison_I_P_opts(50, 10, 1000, 50)
+# plot_comparaison(50, 10, 1000)
 
 """""COMPARAISON DES DEUX PROCEDURES DE RESOLUTION"""""
 #comparaison_procedures(50, 10, 1000, 50)

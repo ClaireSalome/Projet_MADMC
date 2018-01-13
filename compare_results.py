@@ -60,5 +60,58 @@ def comparaison_procedures(n, k, m, nbr_tests):
     plt.show()
     return results
 
+def comparaison_I_P_opts(n, k, m, nbr_tests):
+    # pour chaque intervalle
+    results = []
+    for epsilon in np.arange(0.025, 0.51, 0.025):
+        i_epsilon = [0.5 - epsilon, 0.5 + epsilon]
+        print("run for intervalle : [0.5-" + str(epsilon) + ", 0.5+" + str(epsilon) + "]")
+        results_test = []
+        for test in range(nbr_tests):
+            # construction des vecteurs de points
+            v = tls.vector_factory(n, m)
+            # recuperation des donnees
+            minimax_1, P = first_proc(v, i_epsilon, k)
+            _, _ , I_domines = seconde_proc(v, i_epsilon, k)
+            # compter le nombre de non_I_domines
+            nbr_I_optimaux = len(I_domines)
+            # compter le nombre de pareto optimaux
+            nbr_P_optimaux = len(P[k][n-1])
+            # sauvegarde
+            results_test.append([nbr_I_optimaux, nbr_P_optimaux])
+        results.append(np.mean(results_test, axis=0).tolist())
+    plt.plot(list(np.arange(0.025, 0.51, 0.025)), [item[0] for item in results], label="I-optimaux")
+    plt.plot(list(np.arange(0.025, 0.51, 0.025)), [item[1] for item in results], label="P-optimaux")
+    plt.legend(loc='best')
+    plt.xlabel('Epsilon')
+    plt.ylabel('Nombre d\'elements')
+    plt.title("Comparaison des ensembles consideres")
+    plt.show()
+    return results
 
-#comparaison_procedures(1, 10, 1000, 50)
+
+def plot_comparaison(n, k, m):
+    v = tls.vector_factory(n, m)
+    for i, epsilon in enumerate(np.arange(0.025, 0.51, 0.025)):
+        i_epsilon = [0.5 - epsilon, 0.5 + epsilon]
+        # recuperation des donnees
+        minimax, P = first_proc(v, i_epsilon, k)
+        _, _, I_domines = seconde_proc(v, i_epsilon, k)
+        if (i % 2 == 1) :
+            plt.subplot(2,5,(i+1)/2)
+            for j, point in enumerate(P[k][n - 1]):
+                if point == minimax:
+                    plt.plot(point[0], point[1], 'ro')
+                elif point in I_domines:
+                    plt.plot(point[0], point[1], 'go')
+                else:
+                    plt.plot(point[0], point[1], 'bo')
+            plt.title("I=["+str(0.5 - epsilon)+","+str(0.5 + epsilon)+"]")
+            plt.axis('equal')
+            plt.xticks([])
+            plt.yticks([])
+    plt.show()
+
+#comparaison_procedures(50, 10, 1000, 50)
+
+#comparaison_I_P_opts(50, 10, 1000, 50)
